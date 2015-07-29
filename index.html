@@ -15,13 +15,19 @@
 <body>
 <div class="row" style="padding-top:10px">
 	<div class="col-lg-1 col-md-1"></div>
-	<div class="col-lg-5 col-md-5">
+	<div class="col-lg-3 col-md-3">
+		<h1>Source</h1>
+		<canvas id="c" width="400px" height="400px" style="border:1px inset"></canvas><br>
 		<input type="file" id="imgLoader"></input><br>
-		<canvas id="c" width="600px" height="600px" style="border:1px inset"></canvas><br>
 		<button class="btn" onclick="show()">Show Data</button>
 	</div>
 
-        <div class="col-lg-5 col-md-5"><br><br>
+        <div class="col-lg-3 col-md-3">
+		<h1>Canvas Copy</h1>
+		<canvas id="c2" width="400px" height="400px" style="border:1px inset"></canvas><br>
+	</div>
+        <div class="col-lg-3 col-md-3">
+		<h1>Generate PNG</h1>
 		<img id="canvasImg" style="float:left;border:1px inset"> </img>
 	</div>
 	<div class="col-lg-1 col-md-1"></div>
@@ -32,6 +38,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
 <script>
 canvas = new fabric.Canvas('c');
+canvas2 = new fabric.Canvas('c2');
 document.getElementById('imgLoader').onchange = function handleImage(e) {
     var reader = new FileReader();
     reader.onload = function (event) { console.log('fdsf');
@@ -42,13 +49,12 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
             
             var image = new fabric.Image(imgObj);
             image.set({
-                left: 250,
-                top: 250,
+                left: 150,
+                top: 150,
                 angle: 0,
                 padding: 10,
                 cornersize: 10
             });
-            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
             canvas.add(image);
             
             // end fabricJS stuff
@@ -64,11 +70,15 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
 }
 
 function show(){
-    	alert(JSON.stringify(canvas));
+	var json = JSON.stringify( canvas );
+    	//alert(json);
+	//Create img
 	var dataURL = canvas.toDataURL();
 	document.getElementById('canvasImg').src = dataURL;
-	//canvas2 = new fabric.Canvas('c2');
-	//canvas2.loadFromJSON(JSON.Stringify(canvas));
+
+	//Create Canvas2
+	canvas2.clear();
+	canvas2.loadFromJSON(json, canvas.renderAll.bind(canvas2));
 }
 
 //Delete Selected Fabric Obj
