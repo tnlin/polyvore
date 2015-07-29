@@ -1,60 +1,3 @@
-<html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
-<style>
-#canvas-container {
-    position: relative;
-    width: 800px;
-    height: 600px;
-    box-shadow: 0 0 5px 1px black;
-    margin: 10px auto;
-    border: 5px solid transparent;
-}
-#canvas-container.over {
-    border: 5px dashed cyan;
-}
-#images img.img_dragging {
-    opacity: 0.4;
-}
-/* 
-Styles below based on  http://www.html5rocks.com/en/tutorials/dnd/basics/ 
-*/
-
-/* Prevent the text contents of draggable elements from being selectable. */
-[draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-    cursor: move;
-}
-</style>
-
-<!-- Based on the tutorial at http://www.html5rocks.com/en/tutorials/dnd/basics/ -->
-<div id="images">
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/hang.png" width="250" height="250"></img>
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/skirt.png" width="250" height="250"></img>
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/shirt.png" width="250" height="250"></img>
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/shorts.png" width="250" height="250"></img>
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/sshort.png" width="250" height="250"></img>
-    <img draggable="true" src="http://s2s.tw/lohas/uploads/tshirt.png" width="250" height="250"></img>
-</div>
-
-<!-- NOTE: Fabric.js sets both the <canvas> element and the wrapper element which it
-creates to be user-unselectable using CSS properties (e.g. for Webkit, this is 
--webkit-user-select: none;). We could remove that property during the dragging, but 
-I'm just going to wrap the canvas in a container and bind events to that, which is 
-less intrusive.
- -->
-<div id="canvas-container">
-    <canvas id="canvas" width="800" height="600"></canvas>
-</div>
-<script>
 /* Drag and Drop code adapted from http://www.html5rocks.com/en/tutorials/dnd/basics/ */
 
 var canvas = new fabric.Canvas('canvas');
@@ -104,6 +47,7 @@ function handleDrop(e) {
 
     // handle desktop images
     if(e.dataTransfer.files.length > 0){
+               
         var files = e.dataTransfer.files;
         for (var i = 0, f; f = files[i]; i++) {
             
@@ -136,8 +80,8 @@ function handleDrop(e) {
     else{        
        var img = document.querySelector('#images img.img_dragging');
         var newImage = new fabric.Image(img, {
-            width: img.width,
-            height: img.height,
+            width: img.width*2,
+            height: img.height*2,
             // Set the center of the new object based on the event coordinates relative to the canvas container.
             left: e.layerX,
             top: e.layerY
@@ -157,6 +101,7 @@ function handleDragEnd(e) {
 
 if (Modernizr.draganddrop) {
     // Browser supports HTML5 DnD.
+
     // Bind the event listeners for the image elements
     var images = document.querySelectorAll('#images img');
     [].forEach.call(images, function (img) {
@@ -174,6 +119,7 @@ if (Modernizr.draganddrop) {
     alert("This browser doesn't support the HTML5 Drag and Drop API.");
 }
 
+
 $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 46: // when press delete
@@ -186,5 +132,15 @@ $(window).keydown(function(e) {
     }
 });
 
-</script>
-</html>
+function show(){
+        var json = JSON.stringify( canvas );
+        //alert(json);
+        //Create img
+        var dataURL = canvas.toDataURL();
+        document.getElementById('canvasImg').src = dataURL;
+        //Create Canvas2
+	canvas2 = new fabric.Canvas('c2');
+        canvas2.clear();
+        canvas2.loadFromJSON(json, canvas.renderAll.bind(canvas2));
+}
+
