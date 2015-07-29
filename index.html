@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="utf-8">
+    <title>Polyvore Clone</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<div class="row" style="padding-top:10px">
+	<div class="col-lg-1 col-md-1"></div>
+	<div class="col-lg-5 col-md-5">
+		<input type="file" id="imgLoader"></input><br>
+		<canvas id="c" width="600px" height="600px" style="border:1px inset"></canvas><br>
+		<button class="btn" onclick="show()">Show Data</button>
+	</div>
+
+        <div class="col-lg-5 col-md-5"><br><br>
+		<img id="canvasImg" style="float:left;border:1px inset"> </img>
+	</div>
+	<div class="col-lg-1 col-md-1"></div>
+
+</div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
+<script>
+canvas = new fabric.Canvas('c');
+document.getElementById('imgLoader').onchange = function handleImage(e) {
+    var reader = new FileReader();
+    reader.onload = function (event) { console.log('fdsf');
+        var imgObj = new Image();
+        imgObj.src = event.target.result;
+        imgObj.onload = function () {
+            // start fabricJS stuff
+            
+            var image = new fabric.Image(imgObj);
+            image.set({
+                left: 250,
+                top: 250,
+                angle: 0,
+                padding: 10,
+                cornersize: 10
+            });
+            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+            canvas.add(image);
+            
+            // end fabricJS stuff
+        }
+        
+    }
+    reader.readAsDataURL(e.target.files[0]);
+    console.log(JSON.stringify(canvas));
+    canvas.on('mouse:over_', function(e) {
+        alert("商品資訊");
+	canvas.renderAll();
+    });
+}
+
+function show(){
+    	alert(JSON.stringify(canvas));
+	var dataURL = canvas.toDataURL();
+	document.getElementById('canvasImg').src = dataURL;
+	//canvas2 = new fabric.Canvas('c2');
+	//canvas2.loadFromJSON(JSON.Stringify(canvas));
+}
+
+//Delete Selected Fabric Obj
+$(window).keydown(function(e) {    
+    switch (e.keyCode) {
+        case 46: // when press delete
+	if(canvas.getActiveGroup()){
+      		canvas.getActiveGroup().forEachObject(function(o){ canvas.remove(o) });
+      		canvas.discardActiveGroup().renderAll();
+    	} else {
+      		canvas.remove(canvas.getActiveObject());
+    	}        
+    }
+});
+
+</script>
+
