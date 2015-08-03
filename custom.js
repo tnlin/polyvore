@@ -132,15 +132,32 @@ $(window).keydown(function(e) {
     }
 });
 
-function show(){
+function testCanvas(){
         var json = JSON.stringify( canvas );
-        //alert(json);
         //Create img
         var dataURL = canvas.toDataURL();
         document.getElementById('canvasImg').src = dataURL;
         //Create Canvas2
 	canvas2 = new fabric.Canvas('c2');
         canvas2.clear();
-        canvas2.loadFromJSON(json, canvas.renderAll.bind(canvas2));
+        canvas2.loadFromJSON(json, canvas2.renderAll.bind(canvas2));
 }
 
+function saveCanvas(){
+    var json = JSON.stringify( canvas);
+    var dataURL = canvas.toDataURL();
+//    console.log(json);
+    $.ajax({
+        url: "save.php",
+        type: "POST",
+	dataType:"text",
+	data:{
+	   'json':json,
+	   'imgBase64': dataURL
+	}
+    }).done(function (msg){
+        //console.log("--OK--:"+msg);
+	alert("Publish success");
+	window.location = "./";	
+    });
+}
