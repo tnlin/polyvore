@@ -9,20 +9,20 @@
 	<div class="form-group">
 	    <label class="col-lg-2 control-label">商品名稱</label>
 	    <div class="col-lg-10">
-    	    	<input class="form-control" name="productName" placeholder="請輸入商品名稱">
+    	    	<input class="form-control" name="productName" placeholder="請輸入商品名稱" required>
 	    </div>
 	</div>
 	<div class="form-group">
 	    <label class="col-lg-2 control-label">介紹</label>
 	    <div class="col-lg-10">
-		<textarea class="form-control" name="descript" rows="3" placeholder="請輸入商品敘述"></textarea>
+		<textarea class="form-control" name="descript" rows="3" placeholder="請輸入商品敘述" required></textarea>
 	    </div>
 	</div>
 
 	<div class="form-group">
 	    <label class="col-lg-2 control-label">網址</label>
 	    <div class="col-lg-10">
-	    	    <input type="url" name="url" class="form-control" placeholder="請輸入連結網址">
+	    	    <input type="url" name="url" class="form-control" placeholder="請輸入電商導購網址" required>
 	    </div>
 	</div>
 	<div class="form-group">
@@ -104,13 +104,14 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-}//if isset($_POST["submit"])
+}//end of if isset($_POST["submit"])
 ?>
 
 
 </div><!--Container-->
 </body>
 <script>
+//Preview before upload to server
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -120,11 +121,12 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 $("#fileToUpload").change(function(){
     readURL(this);
 });
-
 </script>
+
 
 <style>
 .btn-file {
@@ -147,7 +149,6 @@ $("#fileToUpload").change(function(){
     display: block;
 }
 </style>
-
 
 
 </html>
