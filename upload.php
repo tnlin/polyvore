@@ -96,7 +96,7 @@ if ($uploadOk == 0) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql="INSERT INTO product(productName,fileName,descript,url) VALUES (?,?,?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($name,$filename,$target_file,$url));
+        $q->execute(array($name,$target_file,$descript,$url));
         Database::disconnect();
 
         echo '<div class="alert alert-info">The file' . basename( $_FILES["fileToUpload"]["name"]). ' has been uploaded.</div>';

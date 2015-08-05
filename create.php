@@ -3,29 +3,29 @@
 <?php include '_head.php';?>
 <div class="container">
  <div class="row" style="padding-top:10px">
-   <div class="col-lg-1">
-	<button class="btn btn-primary" onclick="saveCanvas()">Publish</button>
-	<hr>
-	<button class="btn" onclick="testCanvas()">Test</button>
-   </div>
+<!--	
+	<button class="btn" onclick="testCanvas()">Test</button> 
+-->
    <div class="col-lg-6">
 	<div class="label label-info">Source</div>
  	<div id="canvas-container">
-    		<canvas id="canvas" width="400px" height="400px"></canvas>
+    		<canvas id="canvas" width="500px" height="500px"></canvas>
 	</div>
+	<button class="btn btn-primary" onclick="saveCanvas()">Publish</button>
+   </div>
+   <div class="col-lg-6">
 	<div id="images">
 	   <?php
 		$dirname = "uploads/";
 		$images = glob($dirname."*.{jpg,png,gif}", GLOB_BRACE);
 		foreach($images as $image) {
-		 echo '<img draggable="true" src="'.$image.'" width="100" height="100"/></img>';
+		 echo '<img draggable="true" src="'.$image.'" width="150" height="150"/></img>';
 		}
 	    ?>	
 	</div>   
    </div>
-   <div class="col-lg-1"></div>
+<!--
    <div class="col-lg-4">
-  	<!-- Based on the tutorial at http://www.html5rocks.com/en/tutorials/dnd/basics/ -->
 	<div class="label label-success">Canvas Copy</div>
  	<div id="canvas-container">
     		<canvas id="c2" width="400px" height="400px"></canvas>
@@ -36,6 +36,7 @@
 		<img id="canvasImg"> </img>
 	</div>
    </div>
+-->
  </div><!--row-->
 </div><!--container-->
 

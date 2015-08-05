@@ -33,6 +33,7 @@
       <ul class="nav navbar-nav">
         <li><a href="create.php">Create </a></li>
         <li><a href="upload.php">Upload </a></li>
+        <li><a href="manage.php">Manage </a></li>
       </ul>
       </form>
     </div><!-- /.navbar-collapse -->
