@@ -13,7 +13,9 @@
 	   foreach ($q as $row) {
 		echo '<div class="col-lg-3">';
 		echo '	<div class=thumbnail>';
-		echo '		<img src="'.$row['image'].'" width="200" height="200"></img>'; 
+		echo '		<a href="read.php?id='.$row['id'].'"">';
+		echo '			<img src="'.$row['image'].'" width="200" height="200"></img> ';
+		echo '		</a>'; 
 		echo '		<div class=caption>';
 		echo '			<h3>'.$row['id'].'</h3>';
 		echo '			<label class="label label-info">'.$row['image'].'</label>';
