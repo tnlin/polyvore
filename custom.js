@@ -45,41 +45,9 @@ function handleDrop(e) {
     e.stopPropagation(); // Stops some browsers from redirecting.
     e.preventDefault(); // Stops some browsers from redirecting.
 
-    // handle desktop images
-    if(e.dataTransfer.files.length > 0){
-               
-        var files = e.dataTransfer.files;
-        for (var i = 0, f; f = files[i]; i++) {
-            
-            // Only process image files.
-            if (f.type.match('image.*')) {            
-                // Read the File objects in this FileList.
-                var reader = new FileReader();
-                // listener for the onload event
-                reader.onload = function(evt) {
-                    // create img element
-                    var img = document.createElement('img');
-                    img.src= evt.target.result;                        
-                    
-                    // put image on canvas
-                    var newImage = new fabric.Image(img, {
-                        width: img.width,
-                        height: img.height,
-                        // Set the center of the new object based on the event coordinates relative to the canvas container.
-                        left: e.layerX,
-                        top: e.layerY
-                    });
-                    canvas.add(newImage);
-                };
-               // Read in the image file as a data URL.
-               reader.readAsDataURL(f);
-            }
-        }
-    }  
     // handle browser images
-    else{        
        var img = document.querySelector('#images img.img_dragging');
-        var newImage = new fabric.Image(img, {
+       var newImage = new fabric.Image(img, {
             width: img.width*2,
             height: img.height*2,
             // Set the center of the new object based on the event coordinates relative to the canvas container.
@@ -87,8 +55,6 @@ function handleDrop(e) {
             top: e.layerY
         });
         canvas.add(newImage); 
-    } 
-    
     return false;
 }
 
