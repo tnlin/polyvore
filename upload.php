@@ -41,7 +41,7 @@
      </div>
 
      <div class="col-lg-4">
-	    <img id="blah" src="http://placehold.it/200x200" />
+	    <img id="blah" src="http://placehold.it/300x300" style="max-width:300px;" />
       </div>
    </form>
 </div>
