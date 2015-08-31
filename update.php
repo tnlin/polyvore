@@ -92,7 +92,7 @@
                                     </div>
                                   </div>
                                   <div class="control-group <?php echo !empty($urlError)?'error':'';?>">
-                                    <label class="control-label">Mobile Number</label>
+                                    <label class="control-label">Url</label>
                                     <div class="controls">
                                         <input name="url" type="text" class="form-control" placeholder="url" value="<?php echo !empty($url)?$url:'';?>">
                                         <?php if (!empty($urlError)): ?>

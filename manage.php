@@ -21,7 +21,7 @@
                             echo '<td>'. $row['descript'] . '</td>';
                             echo '<td>'. $row['url'] . '</td>';
                             echo '<td width=250>';
-                            echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a> ';
+                            echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Modify</a> ';
                             echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a> ';
                             echo '</td>';
                             echo '</tr>';

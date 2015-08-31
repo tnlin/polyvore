@@ -13,7 +13,7 @@
 	   foreach ($q as $row) {
 		echo '<div class="col-lg-3">';
 		echo '	<div class=thumbnail>';
-		echo '		<a href="read.php?id='.$row['id'].'"">';
+		echo '		<a href="read.php?id='.$row['id'].'">';
 		echo '			<img src="'.$row['image'].'" width="200" height="200"></img> ';
 		echo '		</a>'; 
 		echo '		<div class=caption>';
