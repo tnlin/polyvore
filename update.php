@@ -74,27 +74,27 @@
                         </div>
                         <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
                           <div class="control-group <?php echo !empty($nameError)?'error':'';?>">
-                            <label class="control-label">Name</label>
+                            <label class="control-label">商品名稱</label>
                                     <div class="controls">
-                                        <input name="name" type="text"  class="form-control" placeholder="Name" value="<?php echo !empty($name)?$name:'';?>">
+                                        <input name="name" type="text"  class="form-control" placeholder="請輸入商品名稱" value="<?php echo !empty($name)?$name:'';?>">
                                         <?php if (!empty($nameError)): ?>
                                                 <span class="help-inline"><?php echo $nameError;?></span>
                                         <?php endif; ?>
                                    </div>
                                  </div>
                                  <div class="control-group <?php echo !empty($emailError)?'error':'';?>">
-                                    <label class="control-label">Email Address</label>
+                                    <label class="control-label">介紹</label>
                                     <div class="controls">
-                                        <input name="email" type="text" class="form-control" placeholder="Email Address" value="<?php echo !empty($email)?$email:'';?>">
+                                        <input name="email" type="text" class="form-control" placeholder="請輸入介紹" value="<?php echo !empty($email)?$email:'';?>">
                                         <?php if (!empty($emailError)): ?>
                                                 <span class="help-inline"><?php echo $emailError;?></span>
                                         <?php endif;?>
                                     </div>
                                   </div>
                                   <div class="control-group <?php echo !empty($urlError)?'error':'';?>">
-                                    <label class="control-label">Url</label>
+                                    <label class="control-label">網址</label>
                                     <div class="controls">
-                                        <input name="url" type="text" class="form-control" placeholder="url" value="<?php echo !empty($url)?$url:'';?>">
+                                        <input name="url" type="text" class="form-control" placeholder="請輸入電商導購網址" value="<?php echo !empty($url)?$url:'';?>">
                                         <?php if (!empty($urlError)): ?>
                                                 <span class="help-inline"><?php echo $urlError;?></span>
                                         <?php endif;?>
@@ -102,8 +102,8 @@
                                   </div>
 				  <hr>
                                   <div class="form-actions">
-                                       <button type="submit" class="btn btn-success">Update</button>
-                                       <a class="btn btn-default" href="manage.php">Back</a>
+                                       <button type="submit" class="btn btn-success">更新</button>
+                                       <a class="btn btn-default" href="manage.php">取消</a>
                                   </div>
                          </form>
               </div>

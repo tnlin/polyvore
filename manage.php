@@ -15,7 +15,7 @@
                            $q->execute();
                            foreach ($q as $row) {
                             echo '<tr>';
-                            echo '<td><image src='.$row['fileName'].' width="50" height="50"></image></td>';
+                            echo '<td><image src='.$row['fileName'].' style="width:50px;"></image></td>';
                             echo '<td>'. $row['id'] . '</td>';
                             echo '<td>'. $row['productName'] . '</td>';
                             echo '<td>'. $row['descript'] . '</td>';
