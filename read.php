@@ -163,6 +163,7 @@ $(function(e) {
 		for(i=1;i<arr.length;i++){
 			if(relX > arr[i].left &&  relX < arr[i].left + arr[i].width && relY > arr[i].top && relY < arr[i].top + arr[i].height){
 	                	window.open(arr[i].url);
+				//document.location.href = arr[i].url
 			}
 		}
                 canvas.renderAll();

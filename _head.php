@@ -25,15 +25,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Polyvore Clone</a>
+      <a class="navbar-brand" href="index.php">ITRI Polyvore</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="create.php">Create </a></li>
-        <li><a href="upload.php">Upload </a></li>
-        <li><a href="manage.php">Manage </a></li>
+        <li><a href="create.php">拼貼 </a></li>
+        <li><a href="upload.php">商品上架 </a></li>
+        <li><a href="manage.php">商品管理 </a></li>
       </ul>
       </form>
     </div><!-- /.navbar-collapse -->
