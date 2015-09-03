@@ -12,6 +12,9 @@
     		<canvas id="canvas" width="500px" height="500px"></canvas>
 	</div>
 	<button class="btn btn-primary" onclick="saveCanvas()">Publish</button>
+	<button class="btn btn-default" onclick="setTemplate(1)">T1</button>
+	<button class="btn btn-default" onclick="setTemplate(2)">T2</button>
+	<button class="btn btn-default" onclick="setTemplate(3)">T3</button>
    </div>
    <div class="col-lg-6">
 	<div id="images">
@@ -19,24 +22,11 @@
 		$dirname = "uploads/";
 		$images = glob($dirname."*.{jpg,png,gif}", GLOB_BRACE);
 		foreach($images as $image) {
-		 echo '<img draggable="true" src="'.$image.'" width="150" height="150"/></img>';
+		 echo '<img draggable="true" src="'.$image.'" style="max-width:150px;"/></img>';
 		}
 	    ?>	
 	</div>   
    </div>
-<!--
-   <div class="col-lg-4">
-	<div class="label label-success">Canvas Copy</div>
- 	<div id="canvas-container">
-    		<canvas id="c2" width="400px" height="400px"></canvas>
-	</div>
-	<hr>
-	<div class="label label-info">PNG</div><br>
- 	<div id="canvas-container">
-		<img id="canvasImg"> </img>
-	</div>
-   </div>
--->
  </div><!--row-->
 </div><!--container-->
 
@@ -49,7 +39,9 @@ less intrusive.
 </body>
 	<!--Fabric & DnD -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
 	<script src="custom.js"></script>
 </html>
 

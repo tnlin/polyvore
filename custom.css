@@ -7,7 +7,7 @@
     border: 5px solid transparent;
 }
 #canvas-container.over {
-    border: 5px dashed cyan;
+    border: 5px inset;
 }
 #images img.img_dragging {
     opacity: 0.4;
